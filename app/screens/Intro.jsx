@@ -5,8 +5,13 @@ import colors from '../misc/colors'
 
 
 const Intro = () => {
-    const [user, setUser] = useState();
-    const handleOnChangeText = text => setUser(text);
+    const [name, setName] = useState('');
+    const handleOnChangeText = text => setName(text);
+
+    const handleSubmit = async () => {
+        const user = { name: name }
+        await AsyncStorage.setItem('user', JSON.stringify(user))
+    }
     
     return (
         <>
@@ -14,12 +19,14 @@ const Intro = () => {
         <View style={styles.container}>
             <Text style={styles.inputTitle}>Entrer votre nom pour continuer</Text>
             <TextInput 
-                value={user} 
+                value={name} 
                 onChangeText={handleOnChangeText} 
                 placeholder='Entrer votre nom' 
                 style={styles.textInput}
             />
-            <RoundIconBtn/>
+            {user.trim().length >= 3 ? ( 
+                <RoundIconBtn antIconName='arrowright' onPress={handleSubmit}/> 
+            ) : null}
         </View>
         </>
     );
@@ -42,6 +49,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingLeft: 15,
         fontSize: 25,
+        marginBottom: 15,
     },
     inputTitle: {
         alignSelf: 'flex-start',
