@@ -1,16 +1,32 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, View, Text, TextInput, StatusBar, Dimensions } from 'react-native';
+import colors from '../misc/colors'
+
 
 const Intro = () => {
     return (
-        <View>
+        <>
+        <StatusBar hidden/>
+        <View style={styles.container}>
             <Text>Entrer votre nom pour continuer</Text>
-            <TextInput/>
+            <TextInput style={styles.textInput}/>
         </View>
+        </>
     );
 }
 
-const styles = StyleSheet.create({})
+const {width} = Dimensions.get('window');
+console.log(width);
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textInput: {
+        borderWidth: 2,
+        borderColor: colors.PRIMARY,
+    }
+});
 
 export default Intro;
