@@ -15,7 +15,7 @@ const Intro = () => {
     );
 }
 
-const {width} = Dimensions.get('window') - 50;
+const width = Dimensions.get('window').width - 50;
 console.log(width);
 const styles = StyleSheet.create({
     container: {
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         borderColor: colors.PRIMARY,
         width,
         height: 40,
+        borderRadius: 10,
     }
 });
 
