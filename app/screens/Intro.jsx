@@ -8,8 +8,8 @@ const Intro = () => {
         <>
         <StatusBar hidden/>
         <View style={styles.container}>
-            <Text>Entrer votre nom pour continuer</Text>
-            <TextInput style={styles.textInput}/>
+            <Text style={styles.inputTitle}>Entrer votre nom pour continuer</Text>
+            <TextInput placeholder='Entrer votre nom' style={styles.textInput}/>
         </View>
         </>
     );
@@ -29,7 +29,13 @@ const styles = StyleSheet.create({
         width,
         height: 40,
         borderRadius: 10,
-    }
+        paddingLeft: 15,
+        fontSize: 25,
+    },
+    inputTitle: {
+        alignSelf: 'flex-start',
+        paddingLeft: 25,
+    },
 });
 
 export default Intro;
